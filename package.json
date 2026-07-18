@@ -1,0 +1,12 @@
+{
+  "name": "operation-better-together-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static website for Operation Better Together",
+  "scripts": {
+    "start": "serve . -l ${PORT:-3000}"
+  },
+  "dependencies": {
+    "serve": "^14.2.6"
+  }
+}
