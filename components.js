@@ -153,16 +153,20 @@
     });
   });
 
-  const demoForm = document.querySelector('[data-demo-form]');
-  if (demoForm) {
-    demoForm.addEventListener('submit', (event) => {
-      event.preventDefault();
+  const contactForm = document.querySelector('[data-contact-form]');
+  if (contactForm) {
+    const nextField = contactForm.querySelector('input[name="_next"]');
+    if (nextField) {
+      nextField.value = location.origin + location.pathname + '?sent=1';
+    }
+    if (new URLSearchParams(location.search).get('sent') === '1') {
+      contactForm.hidden = true;
       const message = document.getElementById('form-message');
       if (message) {
-        message.textContent = 'This prototype form is ready to connect to the email address or form service selected for the live site.';
+        message.textContent = 'Thank you — your message has been sent. A member of the Operation Better Together team will get back to you soon.';
         message.hidden = false;
       }
-    });
+    }
   }
 
   const year = document.getElementById('year');

@@ -27,16 +27,21 @@ Then visit `http://localhost:8000`.
 
 ## Content still needed before launch
 - Final domain and hosting platform
-- Program email, phone number, hours, and confirmed addresses
+- Program phone number, hours, and confirmed addresses
 - Leadership and clinical-team names, biographies, photos, and credentials
 - Partner logos and permission to display them
 - Final events and resource-library materials
-- Contact form destination or form service
 - Verification that the referral short link remains active
 - Privacy policy and any required legal review
 - Final accessibility testing
 
-## Important
-The general contact form in this prototype does not send information. It must be connected
-to an approved destination. Do not use a general website form to collect protected health
-information.
+## Contact form
+The general contact form (`contact.html`) submits to `ohiooperationbettertogeth@gmail.com`
+via [FormSubmit](https://formsubmit.co/), a free form-to-email relay that requires no
+backend or API keys. **The first submission after deploying triggers a one-time
+confirmation email from FormSubmit to that inbox** &mdash; someone must click the activation
+link in it before the form will deliver any further messages. After that, every submission
+is emailed to the inbox with the sender's reply-to address set automatically.
+
+Do not use this general form to collect protected health information (PHI). Referrals and
+clinical details should go through the secure referral link on the Referrals page instead.
