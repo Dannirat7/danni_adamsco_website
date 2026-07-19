@@ -564,3 +564,17 @@ textarea { min-height: 145px; resize: vertical; }
   .referral-box { text-align: center; }
   .qr-wrap { width: min(280px, 100%); margin-inline: auto; }
 }
+.hero-photo {
+  width: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+  max-height: 320px;
+  margin-bottom: 1rem;
+}
+.photo-panel img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  max-height: 220px;
+  margin-bottom: 1rem;
+}
