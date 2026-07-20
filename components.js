@@ -172,3 +172,30 @@
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 })();
+(function() {
+  var revealEls = document.querySelectorAll('.card, .partner-card, .action-card, .quote-panel, .section-head, .stat');
+  revealEls.forEach(function(el){ el.classList.add('reveal-init'); });
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry, i){
+        if (entry.isIntersecting) {
+          setTimeout(function(){ entry.target.classList.add('in-view'); }, i * 80);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(function(el){ obs.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in-view'); });
+  }
+
+  var bar = document.createElement('div');
+  bar.id = 'scroll-progress-bar';
+  document.body.appendChild(bar);
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement;
+    var scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    bar.style.width = scrolled + '%';
+  });
+})();
